@@ -4,8 +4,9 @@ import com.armilp.ifreq.MainEZ;
 import com.armilp.ifreq.Plugin;
 import com.armilp.ifreq.common.frequency.FrequencyManager;
 import com.armilp.ifreq.common.items.ItemWalkieTalkie;
-import net.minecraft.world.entity.EquipmentSlot;
+import com.armilp.ifreq.compat.curios.CuriosCompat;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -29,7 +30,6 @@ public class WalkieHandler {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         EquipmentSlot slot = event.getSlot();
         if (slot != EquipmentSlot.MAINHAND && slot != EquipmentSlot.OFFHAND) return;
-
         evaluateWalkieState(player);
     }
 
@@ -46,9 +46,9 @@ public class WalkieHandler {
         evaluateWalkieState(player);
     }
 
-    private static void evaluateWalkieState(ServerPlayer player) {
+    public static void evaluateWalkieState(ServerPlayer player) {
         UUID playerId = player.getUUID();
-        ItemStack walkie = getHeldWalkie(player);
+        ItemStack walkie = getActiveWalkie(player);
 
         if (walkie == null || !ItemWalkieTalkie.isOn(walkie)) {
             if (activePlayers.contains(playerId)) {
@@ -81,12 +81,18 @@ public class WalkieHandler {
         UUID playerId = player.getUUID();
         if (!activePlayers.contains(playerId)) return;
 
-        ItemStack walkie = getHeldWalkie(player);
+        ItemStack walkie = getActiveWalkie(player);
         if (walkie == null) return;
 
         double maxDistance = ((ItemWalkieTalkie) walkie.getItem()).getMaxDistance();
         Plugin.subscribeToFrequency(player, newFrequency, maxDistance);
         lastFrequencies.put(playerId, newFrequency);
+    }
+
+    public static ItemStack getActiveWalkie(ServerPlayer player) {
+        ItemStack hand = getHeldWalkie(player);
+        if (hand != null) return hand;
+        return CuriosCompat.getEquippedWalkie(player).orElse(null);
     }
 
     public static ItemStack getHeldWalkie(ServerPlayer player) {

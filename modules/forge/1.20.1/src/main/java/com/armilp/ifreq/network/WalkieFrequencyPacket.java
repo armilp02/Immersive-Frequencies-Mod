@@ -1,6 +1,5 @@
 package com.armilp.ifreq.network;
 
-import com.armilp.ifreq.Plugin;
 import com.armilp.ifreq.common.WalkieHandler;
 import com.armilp.ifreq.common.frequency.FrequencyManager;
 import com.armilp.ifreq.common.items.ItemWalkieTalkie;

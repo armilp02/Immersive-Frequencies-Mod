@@ -4,6 +4,7 @@ import com.armilp.ifreq.common.registry.ModCreativeTab;
 import com.armilp.ifreq.common.registry.ModItems;
 import com.armilp.ifreq.common.registry.ModMenus;
 import com.armilp.ifreq.common.registry.ModSounds;
+import com.armilp.ifreq.compat.curios.CuriosCompat;
 import com.armilp.ifreq.network.ModPackets;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
@@ -36,6 +37,9 @@ public class MainEZ {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         ModPackets.register();
+        if (CuriosCompat.isLoaded()) {
+            CuriosCompat.setup();
+        }
     }
 
     @SubscribeEvent

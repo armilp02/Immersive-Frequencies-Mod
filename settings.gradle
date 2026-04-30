@@ -1,3 +1,4 @@
+// to do mixin
 pluginManagement {
     repositories {
         mavenCentral()
@@ -40,8 +41,8 @@ rootProject.name = 'Immersive Frequencies'
 // Example how to use multiple modules within a module:
 
 include "modules:forge",
-      "modules:forge:1.20.1",
-      "modules:forge:1.21.1"
+      "modules:forge:1.20.1"
+//      "modules:forge:1.21.1"
 //      "modules:MODULE_NAME:SUB_MODULE_NAME"
 
 // You can even add a Multi-Loader project ! (using Architectury may require some extra steps)
