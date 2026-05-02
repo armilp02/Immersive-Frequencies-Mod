@@ -1,7 +1,6 @@
 package com.armilp.ifreq.compat.curios;
 
 import com.armilp.ifreq.common.items.ItemWalkieTalkie;
-import com.armilp.ifreq.common.registry.ModItems;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;

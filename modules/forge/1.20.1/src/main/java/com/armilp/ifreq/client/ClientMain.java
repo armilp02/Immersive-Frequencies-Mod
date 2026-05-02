@@ -1,9 +1,11 @@
 package com.armilp.ifreq.client;
 
 import com.armilp.ifreq.MainEZ;
+import com.armilp.ifreq.client.curios.renderer.WalkieCurioRenderer;
 import com.armilp.ifreq.client.keys.KeyBindings;
 import com.armilp.ifreq.client.screen.WalkieTalkieScreen;
 import com.armilp.ifreq.common.items.ItemWalkieTalkie;
+import com.armilp.ifreq.common.registry.ModItems;
 import com.armilp.ifreq.common.registry.ModMenus;
 import com.armilp.ifreq.compat.curios.CuriosCompat;
 import com.armilp.ifreq.network.ModPackets;
@@ -17,6 +19,7 @@ import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 public class ClientMain {
 
@@ -26,6 +29,7 @@ public class ClientMain {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             MenuScreens.register(ModMenus.WALKIE_TALKIE_MENU.get(), WalkieTalkieScreen::new);
+            CuriosRendererRegistry.register(ModItems.WALKIE_TALKIE.get(), WalkieCurioRenderer::new);
         }
 
         @SubscribeEvent
