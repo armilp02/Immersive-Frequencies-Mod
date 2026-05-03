@@ -1,3 +1,6 @@
-### 📦 Version 0.1-beta
+### 📦 Version 0.2-beta
 
-- Initial release of Immersive Frequencies mod! This is a beta version, so expect some bugs and missing features.
+- Configurable range for the walkies in the config (.json for future walkies)
+- Walkie Talkie improved (3D model)
+- Compatibility with curios slot (optional dependecy)
+- Port to 1.21.1 and 1.21.11 NeoForge
