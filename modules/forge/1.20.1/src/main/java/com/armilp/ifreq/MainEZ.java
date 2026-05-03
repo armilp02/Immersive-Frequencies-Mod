@@ -5,6 +5,7 @@ import com.armilp.ifreq.common.registry.ModItems;
 import com.armilp.ifreq.common.registry.ModMenus;
 import com.armilp.ifreq.common.registry.ModSounds;
 import com.armilp.ifreq.compat.curios.CuriosCompat;
+import com.armilp.ifreq.config.WalkieConfig;
 import com.armilp.ifreq.network.ModPackets;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,7 +27,7 @@ public class MainEZ {
 
     public MainEZ() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModItems.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModItems.register(modEventBus);
         ModSounds.register(modEventBus);
         ModCreativeTab.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
@@ -37,6 +38,7 @@ public class MainEZ {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         ModPackets.register();
+        WalkieConfig.load();
         if (CuriosCompat.isLoaded()) {
             CuriosCompat.setup();
         }

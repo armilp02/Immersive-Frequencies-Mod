@@ -1,5 +1,6 @@
 package com.armilp.ifreq.common.items;
 
+import com.armilp.ifreq.config.WalkieConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -16,16 +17,15 @@ public class ItemWalkieTalkie extends Item {
 
     private static final String TAG_FREQUENCY = "Frequency";
     private static final String TAG_ON = "On";
+    private final String configKey;
 
-    private final double maxDistance;
-
-    public ItemWalkieTalkie(Properties properties, double maxDistance) {
+    public ItemWalkieTalkie(Properties properties, String configKey) {
         super(properties);
-        this.maxDistance = maxDistance;
+        this.configKey = configKey;
     }
 
     public double getMaxDistance() {
-        return maxDistance;
+        return WalkieConfig.getRange(configKey);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ItemWalkieTalkie extends Item {
         tooltip.add(Component.translatable("item.ifreq.walkie_talkie.tooltip.frequency",
                 String.format("%.1f", getFrequency(stack))));
         tooltip.add(Component.translatable("item.ifreq.walkie_talkie.tooltip.range",
-                (int) maxDistance));
+                (int) getMaxDistance()));
     }
 
     @Override
