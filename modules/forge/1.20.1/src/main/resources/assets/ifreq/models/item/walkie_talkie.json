@@ -1,7 +1,39 @@
 {
   "loader": "forge:separate_transforms",
   "base": {
-    "parent": "ifreq:item/walkie_talkie_3d"
+    "parent": "builtin/entity",
+    "display": {
+      "thirdperson_righthand": {
+        "rotation": [173.57, -0.01, -179.93],
+        "translation": [0, -1.75, 0],
+        "scale": [0.490234375, 0.490234375, 0.490234375]
+      },
+      "thirdperson_lefthand": {
+        "rotation": [173.57, -0.01, -179.93],
+        "translation": [0, -1.75, 0],
+        "scale": [0.490234375, 0.490234375, 0.490234375]
+      },
+      "firstperson_righthand": {
+        "rotation": [173.57, -0.01, -179.93],
+        "translation": [0, -1.75, 0],
+        "scale": [0.490234375, 0.490234375, 0.490234375]
+      },
+      "firstperson_lefthand": {
+        "rotation": [173.57, -0.01, -179.93],
+        "translation": [0, -1.75, 0],
+        "scale": [0.490234375, 0.490234375, 0.490234375]
+      },
+      "ground": {
+        "rotation": [173.57, -0.01, -179.93],
+        "translation": [0, -1.75, 0],
+        "scale": [0.490234375, 0.490234375, 0.490234375]
+      },
+      "head": {
+        "rotation": [173.57, -0.01, -179.93],
+        "translation": [0, -1.75, 0],
+        "scale": [0.490234375, 0.490234375, 0.490234375]
+      }
+    }
   },
   "perspectives": {
     "gui": {
